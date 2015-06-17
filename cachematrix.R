@@ -1,10 +1,11 @@
-## Put comments here that give an overall description of what your
-## functions do
+## The first fucntino will create a list taht contains the matrix and it's inverse
 
-## Write a short comment describing this function
+## The second function will check if a inverse is cached, if not calculate the inverse
 
 makeCacheMatrix <- function(x = matrix()) {
   i<-NULL
+  # Once the list is created, we can use the set function to change the matrix
+  # In the same time, the cached inverse will be cleared
   set <- function(y) {
     x <<- y
     i <<- NULL
@@ -28,7 +29,10 @@ cacheSolve <- function(x, ...) {
     return(i)
   }
   data <- x$get()
-  i <- solve(data,...)
+  # Adding a if statement to make sure the matrix is a square matrix
+  if (nrow(data)==ncol(data)){
+    i <- solve(data,...)
+  }
   x$setinv(i)
   i
 }
