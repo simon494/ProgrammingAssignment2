@@ -29,9 +29,12 @@ cacheSolve <- function(x, ...) {
     return(i)
   }
   data <- x$get()
-  # Adding a if statement to make sure the matrix is a square matrix
+  # Adding a if statement to make sure the matrix is a square matrix, else prompt a warning message
   if (nrow(data)==ncol(data)){
     i <- solve(data,...)
+  }else{
+    message("The Matrix need to be sqare matrix")
+    return(invisible(i))
   }
   x$setinv(i)
   i
